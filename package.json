@@ -1,0 +1,27 @@
+{
+  "name": "conduit-training",
+  "version": "1.0.0",
+  "description": "A website similar to medium.com built purposefully for learning purposes. Implemented using react and redux, it allows you to create your own account, read others articles, follow a particular user and much more",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aieyan-talha/conduit-training.git"
+  },
+  "author": "aieyan-talha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aieyan-talha/conduit-training/issues"
+  },
+  "homepage": "https://github.com/aieyan-talha/conduit-training#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.3",
+    "validator": "^11.1.0"
+  }
+}
