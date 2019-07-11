@@ -4,7 +4,11 @@
   "description": "A website similar to medium.com built purposefully for learning purposes. Implemented using react and redux, it allows you to create your own account, read others articles, follow a particular user and much more",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ../client",
+    "conduit": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,11 @@
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.3",
+    "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "validator": "^11.1.0"
   }
 }
