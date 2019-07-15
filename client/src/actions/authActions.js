@@ -5,7 +5,7 @@ import setAuthToken from "../utils/setAuthToken";
 import { GET_ERRORS, SET_CURRENT_USER } from "./common";
 
 //Function to register the user. Uses axios to make a call to the backend server and registers the users credentials
-export const registerUser = (userData, history) => dispatch => {
+export const registerUser = dispatch => (userData, history) => {
   axios
     .post("/api/users/register", userData)
     .then(res => history.push("/login"))
@@ -26,7 +26,7 @@ export const setCurrentUser = decodedData => {
 };
 
 //This function logs in the user, by setting the token to local storage and ensuring the session
-export const loginUser = userData => dispatch => {
+export const loginUser = dispatch => userData => {
   axios
     .post("/api/users/login", userData)
     .then(res => {

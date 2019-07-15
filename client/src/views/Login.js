@@ -1,14 +1,10 @@
 //This is the file for the functionality of the Login Page
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 //Importing Components
 import Header from "../components/common/Header";
 import * as Routes from "../routes/routes";
-
-import { loginUser } from "../actions/authActions";
 
 import TextInputField from "../components/common/TextInputField";
 
@@ -50,7 +46,9 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.loginUser(loginData);
+    const { actions } = this.props;
+
+    actions.loginUser(loginData);
   };
 
   render() {
@@ -108,12 +106,5 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
-
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(Login);
+//connection with redux is done in the login container file.
+export default Login;

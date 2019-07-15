@@ -1,13 +1,7 @@
 //This is the file for the functionality of the Register Page
-import axios from "axios";
 
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-
-//Importing Register user action
-import { registerUser } from "../actions/authActions";
 
 //Importing Routes
 import * as Routes from "../routes/routes";
@@ -40,7 +34,8 @@ class Register extends Component {
       password: this.state.password
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    const { actions } = this.props;
+    actions.registerUser(newUser, this.props.history);
   };
 
   componentDidMount() {
@@ -112,12 +107,4 @@ Register.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
-
-export default connect(
-  mapStateToProps,
-  { registerUser }
-)(withRouter(Register));
+export default Register;

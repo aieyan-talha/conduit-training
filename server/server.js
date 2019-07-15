@@ -4,6 +4,7 @@ const body_parser = require("body-parser");
 const passport = require("passport");
 
 const users = require("./routes/users");
+const article = require("./routes/article");
 
 const app = express();
 
@@ -40,6 +41,7 @@ require("./config/passport")(passport);
 
 //Setting up api routes
 app.use("/api/users", users);
+app.use("/api/article", article);
 
 //Application backend is listening at port 5000
 app.listen(port, () => {

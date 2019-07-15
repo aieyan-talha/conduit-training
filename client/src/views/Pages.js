@@ -5,18 +5,18 @@ import React from "react";
 import * as Routes from "../routes/routes";
 
 //Importing components for Login/Signup pages
-import Login from "./Login";
-import Register from "./Register";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
+import LoginContainer from "../containers/loginContainer";
+import RegisterContainer from "../containers/registerContainer";
 
 function Pages() {
   const { LOGIN, REGISTER, DASHBOARD } = Routes;
   return (
     <div>
       <Route exact path="/" component={Landing} />
-      <Route exact path={LOGIN} component={Login} />
-      <Route exact path={REGISTER} component={Register} />
+      <Route exact path={LOGIN} component={LoginContainer} />
+      <Route exact path={REGISTER} component={RegisterContainer} />
       <Route exact path={DASHBOARD} component={Dashboard} />
     </div>
   );
