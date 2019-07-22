@@ -17,6 +17,19 @@ export const registerUser = dispatch => (userData, history) => {
     );
 };
 
+//This is the function to update user information. Used in the settings component
+export const updateUser = dispatch => (user_id, userData, history) => {
+  axios
+    .post(`/api/users/update/${user_id}`, userData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 //This function uses redux as middleware to set the current user, to be used by all pages
 export const setCurrentUser = decodedData => {
   return {
@@ -33,6 +46,7 @@ export const loginUser = dispatch => userData => {
       //Set token to local storage
       const { token } = res.data;
 
+      console.log(res.data);
       //Set token to local storage
       localStorage.setItem("jwtToken", token);
 
@@ -51,13 +65,24 @@ export const loginUser = dispatch => userData => {
 };
 
 //Function to logout the user
-export const logoutUser = () => dispatch => {
+export const logoutUser = dispatch => () => {
   //Remove token from local storage
-  localStorage.removeItem("jwt");
+  localStorage.removeItem("jwtToken");
 
   //Set authentication header to false
   setAuthToken(false);
 
   //Dispatch empty object
   dispatch(setCurrentUser({}));
+};
+
+//Get User Info
+export const getUserInfo = id => dispatch => {
+  axios
+    .get(`/api/users/${id}`)
+    .then(res => {
+      console.log(res.data);
+      return res.data;
+    })
+    .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };

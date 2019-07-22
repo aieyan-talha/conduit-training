@@ -22,6 +22,9 @@ const ArticleSchema = new Schema({
   tags: {
     type: String
   },
+  username: {
+    type: String
+  },
   likes: [
     {
       user: {

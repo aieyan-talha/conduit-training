@@ -18,6 +18,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 //Check if token is set in local storage to maintain session
 if (localStorage.jwtToken) {
+  
   //Set auth token header
   //This is done to make sure that every request contains the token, and isAuthenticated is not falsified
   setAuthToken(localStorage.jwtToken);

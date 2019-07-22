@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
+//Import schemas for Article
 const Article = require("../models/Article");
 const User = require("../models/User");
 
@@ -13,7 +14,8 @@ const createArticle = (data, user) =>
       subtitle: data.subtitle,
       text: data.text,
       tags: data.tags,
-      user: user.id
+      user: user.id,
+      username: user.username
     });
 
     newArticle.save().then(article => {
@@ -47,12 +49,21 @@ const getArticleById = data =>
 //Get article by user id (not working at the mo)
 const getArticleByUserId = data =>
   new Promise((resolve, reject) => {
-    Article.findById(data.id)
+    const user_id = data.user_id;
+    Article.find()
       .then(article => {
-        resolve(article);
+        articles = article.filter(function(data) {
+          //Here a double "==" is used as both values are not of the same type i.e. String, Integer
+          //Therefore the "==" operator converts both values to a single type and  then compares
+          return data.user == user_id;
+        });
+        resolve(articles);
       })
       .catch(err => {
-        reject({ err: "Not article of the user found" });
+        reject({
+          status: 404,
+          error: { noarticlesfound: "No articles found!" }
+        });
       });
   });
 

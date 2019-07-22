@@ -10,13 +10,15 @@ const Tags = ({ title, tags }) => {
             <div className="card-header-title">{title}</div>
           </div>
           <div className="card-content">
-            {tags.map((items, key) => {
-              return (
-                <a href="/" className="button is-rounded is-info is-small">
-                  {items}
-                </a>
-              );
-            })}
+            <div className="buttons are-small are-rounded">
+              {tags.map((items, key) => {
+                return (
+                  <a href="/" className="button is-info">
+                    {items}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

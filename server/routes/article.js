@@ -69,16 +69,15 @@ router.get("/:id", (req, res) => {
 
 //GET
 //Public Route
-//Get Article by ID
-//Not working at the moment
-router.get("/:user_id", (req, res) => {
+//Get Article by User ID (In Progress)
+router.get("/user/:user_id", (req, res) => {
   articleServices
     .getArticleByUserId(req.params)
     .then(article => {
       res.json(article);
     })
     .catch(err => {
-      res.status(404).json(err);
+      res.status(err.status).json(err.error);
     });
 });
 
